@@ -1,49 +1,49 @@
-# Dual Rotor — 3D Vizualizacija Koncepta
+# Dual Rotor — 3D Concept Visualization
 
 **Live demo:** [pavlovic-bojan.github.io/dual-rotor](https://pavlovic-bojan.github.io/dual-rotor/)
 
-Interaktivna 3D vizualizacija koncepta **dual rotor sistema sa Faradejevim kavezom**, izrađena u Three.js.
+Interactive 3D visualization of a **dual rotor system with a Faraday cage**, built with Three.js.
 
-## Koncept
+## Concept
 
-Rotor nije jedna aktivna površina — podjeljen je na dve zone:
+The rotor is not a single active surface — it is split into two zones:
 
-- **Unutrašnja zona** — cilja unutrašnji stator, može raditi kao elektromotor
-- **Spoljašnja zona** — cilja spoljašnji stator, može raditi kao generator
-- **Faradejev kavez / magnetni prekid** — zaštitni pojas između zona koji blokuje uticaj jednog statora na drugi
+- **Inner zone** — targets the inner stator, can operate as an electric motor
+- **Outer zone** — targets the outer stator, can operate as a generator
+- **Faraday cage / magnetic break** — a protective barrier between the zones that blocks the influence of one stator on the other
 
-Ova arhitektura omogućava da unutrašnji i spoljašnji stator rade u različitim režimima istovremeno, sa mehanički i elektromagnetno izolovanim zonama.
+This architecture allows the inner and outer stators to operate in different modes simultaneously, with mechanically and electromagnetically isolated zones.
 
-## Legenda
+## Legend
 
-| Boja / element | Komponenta |
+| Element | Component |
 | --- | --- |
-| Tamno sivi deo | Unutrašnji rotor |
-| Srebrni omotač | Spoljašnji rotor |
-| Zeleni pojas | Faradejev kavez / izolacija |
-| Bakarnasti prstenovi | Aktivne zone prema statorima |
-| Plave strelice | Magnetno polje unutrašnjeg statora |
-| Narandžaste strelice | Magnetno polje spoljašnjeg statora |
+| Dark grey part | Inner rotor |
+| Silver shell | Outer rotor |
+| Green band | Faraday cage / isolation |
+| Copper rings | Active zones facing the stators |
+| Blue arrows | Inner stator magnetic field |
+| Orange arrows | Outer stator magnetic field |
 
-## Kontrole
+## Controls
 
-- **Pauza / Pokreni** — pauzira ili nastavlja animaciju
-- **3D / Bočni / Prednji** — menja ugao pogleda
-- **Explode** — rastavlja komponente za bolji pregled
-- **Presek** — prikazuje poprečni presek sistema
-- **Brzina** — kontroliše brzinu rotacije
-- **Magnetno polje** — prikazuje / skriva vizualizaciju magnetnih linija
-- **Miš** — drag za rotaciju, scroll za zoom
+- **Pause / Start** — pauses or resumes the animation
+- **3D / Side / Front** — changes the camera angle
+- **Explode** — separates components for a better view
+- **Cross-section** — shows a cross-sectional cut of the system
+- **Speed** — controls the rotation speed
+- **Magnetic field** — toggles the magnetic field line visualization
+- **Mouse** — drag to rotate, scroll to zoom
 
-## Tehnologije
+## Tech Stack
 
 - [Three.js r128](https://threejs.org/)
-- Vanilla HTML/CSS/JS — bez build toolova, radi direktno iz browsera
+- Vanilla HTML/CSS/JS — no build tools, runs directly in the browser
 - Font: [Satoshi](https://www.fontshare.com/)
 
-## Deploy
+## Deployment
 
-Projekat se automatski deployuje na GitHub Pages pri svakom push-u na `main` granu, ili ručno pokretanjem GitHub Actions workflow-a.
+The project is automatically deployed to GitHub Pages on every push to the `main` branch, or manually via the GitHub Actions workflow.
 
 ---
 
