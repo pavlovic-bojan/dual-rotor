@@ -118,7 +118,8 @@ const steel=new THREE.MeshPhysicalMaterial({color:0xc6ccd1,metalness:1,roughness
 const steelDark=new THREE.MeshPhysicalMaterial({color:0x7d848d,metalness:.95,roughness:.28});
 const rotorDark=new THREE.MeshPhysicalMaterial({color:0x5a6067,metalness:.88,roughness:.33});
 const copper=new THREE.MeshPhysicalMaterial({color:0xb86a44,metalness:.9,roughness:.36,emissive:0x2c150a,emissiveIntensity:.18});
-const cageMat=new THREE.MeshPhysicalMaterial({color:0x5b7d68,metalness:.35,roughness:.65,transparent:true,opacity:.82});
+const cageMat=new THREE.MeshPhysicalMaterial({color:0x38c472,metalness:.4,roughness:.45,emissive:0x0c4024,emissiveIntensity:.65,transparent:true,opacity:.94});
+const cageAccentMat=new THREE.MeshPhysicalMaterial({color:0x6aedaa,metalness:.55,roughness:.30,emissive:0x1a6040,emissiveIntensity:.85});
 const statorMat=new THREE.MeshPhysicalMaterial({color:0x9298a0,metalness:.78,roughness:.32,transparent:true,opacity:.62});
 const shaftMat=new THREE.MeshPhysicalMaterial({color:0x757b82,metalness:1,roughness:.2});
 
@@ -130,7 +131,13 @@ const hub=new THREE.Mesh(new THREE.CylinderGeometry(.68,.85,1.7,60,1,true), roto
 const hubLip=new THREE.Mesh(new THREE.TorusGeometry(.85,.055,16,80), steel); hubLip.rotation.y=Math.PI/2; hubLip.position.x=-2.8; innerRotor.add(hubLip);
 
 const rotorInnerActive=new THREE.Mesh(new THREE.CylinderGeometry(.94,.94,1.18,72,1,true), rotorDark); rotorInnerActive.rotation.z=Math.PI/2; rotorInnerActive.position.x=-.48; innerRotor.add(rotorInnerActive);
-const cageBarrier=new THREE.Mesh(new THREE.CylinderGeometry(1.12,1.12,.34,72,1,true), cageMat); cageBarrier.rotation.z=Math.PI/2; cageBarrier.position.x=.38; root.add(cageBarrier);
+const cageGroup=new THREE.Group(); root.add(cageGroup); cageGroup.position.x=.38;
+const cageBarrier=new THREE.Mesh(new THREE.CylinderGeometry(1.12,1.12,.56,72,1,true), cageMat); cageBarrier.rotation.z=Math.PI/2; cageGroup.add(cageBarrier);
+const cageCapL=new THREE.Mesh(new THREE.RingGeometry(.94,1.12,72), cageMat); cageCapL.rotation.y=Math.PI/2; cageCapL.position.x=-.28; cageGroup.add(cageCapL);
+const cageCapR=new THREE.Mesh(new THREE.RingGeometry(.94,1.12,72), cageMat); cageCapR.rotation.y=Math.PI/2; cageCapR.position.x=.28; cageGroup.add(cageCapR);
+const cageRing1=new THREE.Mesh(new THREE.TorusGeometry(1.12,.048,16,100), cageAccentMat); cageRing1.rotation.y=Math.PI/2; cageRing1.position.x=-.28; cageGroup.add(cageRing1);
+const cageRing2=new THREE.Mesh(new THREE.TorusGeometry(1.12,.048,16,100), cageAccentMat); cageRing2.rotation.y=Math.PI/2; cageRing2.position.x=.28; cageGroup.add(cageRing2);
+const cageRingMid=new THREE.Mesh(new THREE.TorusGeometry(1.12,.030,16,100), cageAccentMat); cageRingMid.rotation.y=Math.PI/2; cageGroup.add(cageRingMid);
 const rotorOuterActive=new THREE.Mesh(new THREE.CylinderGeometry(1.42,1.42,1.34,84,1,true), steel); rotorOuterActive.rotation.z=Math.PI/2; rotorOuterActive.position.x=1.18; outerRotor.add(rotorOuterActive);
 const outerLip1=new THREE.Mesh(new THREE.TorusGeometry(1.42,.06,16,100), steel); outerLip1.rotation.y=Math.PI/2; outerLip1.position.x=.53; outerRotor.add(outerLip1); const outerLip2=outerLip1.clone(); outerLip2.position.x=1.83; outerRotor.add(outerLip2);
 
@@ -170,11 +177,11 @@ function label(text,color='#1e2124'){
  const t=new THREE.CanvasTexture(c); const s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true})); s.scale.set(2.5,.45,1); return s;
 }
 const L1=label('Unutrašnji rotor'); L1.position.set(-.7,-1.65,0); scene.add(L1);
-const L2=label('Faradejev kavez / prekid','#456a58'); L2.position.set(.42,2.05,0); scene.add(L2);
+const L2=label('Faradejev kavez / prekid','#22c26e'); L2.position.set(.42,2.05,0); scene.add(L2);
 const L3=label('Spoljašnji rotor'); L3.position.set(1.55,-2.05,0); scene.add(L3);
 const L4=label('Spoljašnji stator','#0d5665'); L4.position.set(1.85,2.55,0); scene.add(L4);
 const L5=label('Unutrašnji stator','#0d5665'); L5.position.set(-.92,1.52,0); scene.add(L5);
-function applyCutaway(){const phi = cutaway ? Math.PI*1.35 : Math.PI*2;[hub, rotorInnerActive, cageBarrier, rotorOuterActive, statorIn, statorOut, rearShell].forEach(m=>m.geometry.dispose());hub.geometry=new THREE.CylinderGeometry(.68,.85,1.7,60,1,true,0,phi); rotorInnerActive.geometry=new THREE.CylinderGeometry(.94,.94,1.18,72,1,true,0,phi); cageBarrier.geometry=new THREE.CylinderGeometry(1.12,1.12,.34,72,1,true,0,phi); rotorOuterActive.geometry=new THREE.CylinderGeometry(1.42,1.42,1.34,84,1,true,0,phi); statorIn.geometry=new THREE.CylinderGeometry(.78,.78,1.44,66,1,true,0,phi); statorOut.geometry=new THREE.CylinderGeometry(1.72,1.72,1.82,90,1,true,0,phi); rearShell.geometry=new THREE.CylinderGeometry(1.24,1.24,1.15,72,1,true,0,phi);}
+function applyCutaway(){const phi = cutaway ? Math.PI*1.35 : Math.PI*2;[hub, rotorInnerActive, cageBarrier, rotorOuterActive, statorIn, statorOut, rearShell].forEach(m=>m.geometry.dispose()); cageCapL.geometry.dispose(); cageCapR.geometry.dispose();hub.geometry=new THREE.CylinderGeometry(.68,.85,1.7,60,1,true,0,phi); rotorInnerActive.geometry=new THREE.CylinderGeometry(.94,.94,1.18,72,1,true,0,phi); cageBarrier.geometry=new THREE.CylinderGeometry(1.12,1.12,.56,72,1,true,0,phi); rotorOuterActive.geometry=new THREE.CylinderGeometry(1.42,1.42,1.34,84,1,true,0,phi); statorIn.geometry=new THREE.CylinderGeometry(.78,.78,1.44,66,1,true,0,phi); statorOut.geometry=new THREE.CylinderGeometry(1.72,1.72,1.82,90,1,true,0,phi); rearShell.geometry=new THREE.CylinderGeometry(1.24,1.24,1.15,72,1,true,0,phi); cageCapL.geometry=new THREE.RingGeometry(.94,1.12,72,1,0,phi); cageCapR.geometry=new THREE.RingGeometry(.94,1.12,72,1,0,phi);}
 function setCamera(){ state.az+=(target.az-state.az)*.06; state.el+=(target.el-state.el)*.06; state.r+=(target.r-state.r)*.06; const x=Math.cos(state.el)*Math.cos(state.az)*state.r, y=Math.sin(state.el)*state.r, z=Math.cos(state.el)*Math.sin(state.az)*state.r; camera.position.set(x,y,z); camera.lookAt(.75,0,0); }
 function setView(v){ document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active', b.dataset.view===v)); if(v==='iso') target={...target,az:-.45,el:.24,r:9.2,explode:0}; if(v==='side') target={...target,az:0,el:.03,r:8.6,explode:0}; if(v==='front') target={...target,az:-1.57,el:0,r:7.1,explode:0}; if(v==='explode') target={...target,az:-.36,el:.18,r:9.6,explode:1}; }
 document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
@@ -183,8 +190,8 @@ document.getElementById('cutBtn').addEventListener('click',()=>{cutaway=!cutaway
 document.getElementById('showField').addEventListener('change',e=>{ fieldGroup.visible = e.target.checked; });
 let drag=false,lx=0,ly=0; canvas.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;ly=e.clientY;canvas.setPointerCapture(e.pointerId)}); canvas.addEventListener('pointerup',()=>drag=false); canvas.addEventListener('pointermove',e=>{if(!drag)return; target.az+=(e.clientX-lx)*.006; target.el+=(ly-e.clientY)*.004; target.el=Math.max(-1.2,Math.min(1.2,target.el)); lx=e.clientX; ly=e.clientY;}); canvas.addEventListener('wheel',e=>{target.r=Math.max(5.4,Math.min(12,target.r+e.deltaY*.005)); e.preventDefault();},{passive:false});
 function animate(){ requestAnimationFrame(animate); const dt=clock.getDelta(); const speed=parseFloat(document.getElementById('spd').value); if(playing){ const a=dt*speed*1.5; innerRotor.rotation.x+=a*1.1; outerRotor.rotation.x+=a*.9; ringInner.rotation.x+=a*1.1; ringOuter.rotation.x+=a*.9; fieldGroup.rotation.x += a*0.35; }
- innerRotor.position.x+=((-0.28*target.explode)-innerRotor.position.x)*.07; statorInner.position.x+=((-0.58*target.explode)-statorInner.position.x)*.07; cageBarrier.position.x+=((0.38)-cageBarrier.position.x)*.07; outerRotor.position.x+=((0.46*target.explode)-outerRotor.position.x)*.07; statorOuter.position.x+=((0.82*target.explode)-statorOuter.position.x)*.07; ringInner.position.x+=((-0.28*target.explode)-ringInner.position.x)*.07; ringOuter.position.x+=((0.46*target.explode)-ringOuter.position.x)*.07; rearShell.position.x+=((2.62+1.06*target.explode)-rearShell.position.x)*.07;
- L1.position.x=innerRotor.position.x-.7; L5.position.x=statorInner.position.x-.92; L2.position.x=cageBarrier.position.x+.04; L3.position.x=outerRotor.position.x+1.55; L4.position.x=statorOuter.position.x+1.85;
+ innerRotor.position.x+=((-0.28*target.explode)-innerRotor.position.x)*.07; statorInner.position.x+=((-0.58*target.explode)-statorInner.position.x)*.07; cageGroup.position.x+=((0.38)-cageGroup.position.x)*.07; outerRotor.position.x+=((0.46*target.explode)-outerRotor.position.x)*.07; statorOuter.position.x+=((0.82*target.explode)-statorOuter.position.x)*.07; ringInner.position.x+=((-0.28*target.explode)-ringInner.position.x)*.07; ringOuter.position.x+=((0.46*target.explode)-ringOuter.position.x)*.07; rearShell.position.x+=((2.62+1.06*target.explode)-rearShell.position.x)*.07;
+ L1.position.x=innerRotor.position.x-.7; L5.position.x=statorInner.position.x-.92; L2.position.x=cageGroup.position.x+.04; L3.position.x=outerRotor.position.x+1.55; L4.position.x=statorOuter.position.x+1.85;
  setCamera(); renderer.render(scene,camera);} setView('iso'); animate();
 document.addEventListener("DOMContentLoaded", function () {
 const startYear = 2026; const currentYear = new Date().getFullYear(); document.getElementById("year").textContent = startYear === currentYear ? startYear : startYear + " - " + currentYear;});
