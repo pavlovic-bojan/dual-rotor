@@ -1,26 +1,26 @@
-# Dual Rotor — 3D Concept Visualization
+# Single Rotor, Dual Magnet Sets — 3D Concept Visualization
 
 **Live demo:** [pavlovic-bojan.github.io/dual-rotor](https://pavlovic-bojan.github.io/dual-rotor/)
 
-Interactive 3D visualization of a **dual rotor system with a Faraday cage**, built with Three.js.
+Interactive 3D visualization of a **single rotor with two magnet sets and two Faraday cages**, built with Three.js.
 
 ## Concept
 
-The rotor is not a single active surface — it is split into two zones:
+One rotor carries two independent sets of magnets:
 
-- **Inner zone** — targets the inner stator, can operate as an electric motor
-- **Outer zone** — targets the outer stator, can operate as a generator
-- **Faraday cage / magnetic break** — a protective barrier between the zones that blocks the influence of one stator on the other
+- **Inner magnet set** — targets the inner stator, can operate as an electric motor
+- **Outer magnet set** — targets the outer stator, can operate as a generator
+- **Two Faraday cages** — isolate the active zones and block electromagnetic interference between stators
 
-This architecture allows the inner and outer stators to operate in different modes simultaneously, with mechanically and electromagnetically isolated zones.
+This architecture allows both stators to operate in different modes simultaneously on the same rotor, with electromagnetically isolated zones.
 
 ## Legend
 
 | Element | Component |
 | --- | --- |
-| Dark grey part | Inner rotor |
-| Silver shell | Outer rotor |
-| Green band | Faraday cage / isolation |
+| Dark grey part | Rotor — inner magnet set |
+| Silver shell | Rotor — outer magnet set |
+| Green bands | Two Faraday cages / isolation |
 | Copper rings | Active zones facing the stators |
 | Blue arrows | Inner stator magnetic field |
 | Orange arrows | Outer stator magnetic field |
