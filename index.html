@@ -22,24 +22,23 @@ input[type="range"]{width:110px}.grid{display:grid;grid-template-columns:2fr 1fr
 .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.v{margin-top:6px;font-size:15px;font-weight:700}.small{margin-top:8px;font-size:14px;color:var(--muted);line-height:1.45}
 .badges{display:flex;flex-wrap:wrap;gap:8px}.badge{font-size:12px;border-radius:999px;padding:7px 10px;background:#fff;border:1px solid var(--line);color:var(--muted)}
 @media (max-width: 920px){.grid{grid-template-columns:1fr}.top{flex-direction:column}}
-.footer{position: fixed;bottom: 0;left: 0;width: 100%;backdrop-filter: blur(10px);background: rgba(255,255,255,0.6);border-top: 1px solid rgba(0,0,0,0.06);z-index: 100;}
-.footer-inner{max-width: 1320px;margin: 0 auto;padding: 10px 20px;text-align: center;font-size: 14px;}
-.footer a{text-decoration: none;color: var(--muted);transition: all 0.25s ease;}
-.footer a:hover{color: var(--text);letter-spacing: 0.5px;}
+.footer{position:fixed;bottom:0;left:0;width:100%;backdrop-filter:blur(10px);background:rgba(255,255,255,0.6);border-top:1px solid rgba(0,0,0,0.06);z-index:100;}
+.footer-inner{max-width:1320px;margin:0 auto;padding:10px 20px;text-align:center;font-size:14px;}
+.footer a{text-decoration:none;color:var(--muted);transition:all 0.25s ease;}
+.footer a:hover{color:var(--text);letter-spacing:0.5px;}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top">
     <div>
-      <h1 class="h1">Rotor Koncept — Jedan Rotor, Dva Seta Magneta i Dva Faradejevа Kaveza</h1>
-      <p class="sub">Jedan rotor nosi dva seta magneta — unutrašnji set cilja unutrašnji stator, spoljašnji set cilja spoljašnji stator. Dva Faradejevа kaveza izoluju aktivne zone i blokiraju međusobni elektromagnetni uticaj statora.</p>
+      <h1 class="h1">Prednji Presek — Stator | Faradejjev Kavez | Rotor (ne-fero) + Magneti</h1>
+      <p class="sub">Rotor od ne-fero materijala sa magnetima ugrađenim u zidu rotira unutar Faradejevog kaveza. Stator sa namotajima okružuje kavez spolja.</p>
     </div>
     <div class="badges">
-      <div class="badge">Unutrašnji set magneta ↔ unutrašnji stator</div>
-      <div class="badge">Spoljašnji set magneta ↔ spoljašnji stator</div>
-      <div class="badge">Dva Faradejevа kaveza / magnetna izolacija</div>
-      <div class="badge">Motor i generator na jednom rotoru</div>
+      <div class="badge">Stator — namotaji na unutrašnjoj strani</div>
+      <div class="badge">Faradejjev kavez — magnetna izolacija</div>
+      <div class="badge">Rotor — ne-fero materijal + magneti u zidu</div>
     </div>
   </div>
   <section class="panel">
@@ -48,7 +47,7 @@ input[type="range"]{width:110px}.grid{display:grid;grid-template-columns:2fr 1fr
       <button class="btn" id="playBtn">Pauza</button>
       <button class="btn active" data-view="iso">3D</button>
       <button class="btn" data-view="side">Bočni</button>
-      <button class="btn" data-view="front">Prednji</button>
+      <button class="btn" data-view="front">Prednji presek</button>
       <button class="btn" data-view="explode">Explode</button>
       <button class="btn" id="cutBtn">Presek</button>
       <label class="range">Brzina <input type="range" id="spd" min="0.1" max="3" step="0.1" value="1"></label>
@@ -57,21 +56,21 @@ input[type="range"]{width:110px}.grid{display:grid;grid-template-columns:2fr 1fr
     <div class="grid">
       <div class="stack">
         <div class="card">
-          <div class="k">Glavna izmena</div>
-          <div class="v">Jedan rotor, dva seta magneta</div>
-          <div class="small">Rotor je jedna mehanička celina koja nosi dva odvojena seta magneta — unutrašnji i spoljašnji. Svaki set cilja svoj stator. Dva Faradejevа kaveza izoluju aktivne zone i sprečavaju elektromagnetno preslušavanje između statora.</div>
+          <div class="k">Prednji presek — od spolja ka unutra</div>
+          <div class="v">Stator → Kavez → Rotor + Magneti</div>
+          <div class="small">Spoljašnji stator okružuje Faradejjev kavez. Unutar kaveza rotira cilindar od ne-fero materijala sa magnetima ugrađenim u zidu. Kavez izoluje rotor od elektromagnetnih uticaja statora i obrnuto.</div>
         </div>
         <div class="card">
           <div class="k">Funkcionalna logika</div>
-          <div class="v">Razdvajanje režima rada statora</div>
-          <div class="small">Jedan stator može raditi kao stator elektromotora, a drugi kao stator generatora — istovremeno, na istom rotoru. Faradejevа kaveza osiguravaju da svaki stator radi nezavisno bez uticaja na drugi.</div>
+          <div class="v">Jedan stator, jedan kavez, jedan rotor</div>
+          <div class="small">Stator sa namotajima deluje na magnete ugrađene u zidu rotora kroz Faradejjev kavez. Ne-fero materijal rotora eliminiše reluktantne gubitke. Kavez blokira parazitske struje i obezbeđuje čist magnetni signal.</div>
         </div>
       </div>
       <div class="stack">
-        <div class="card"><div class="k">Tamno sivi deo</div><div class="v">Rotor — unutrašnji set magneta</div></div>
-        <div class="card"><div class="k">Srebrni omotač</div><div class="v">Rotor — spoljašnji set magneta</div></div>
-        <div class="card"><div class="k">Zeleni pojasevi</div><div class="v">Dva Faradejevа kaveza / izolacija</div></div>
-        <div class="card"><div class="k">Bakarnasti prstenovi</div><div class="v">Aktivne zone prema statorima</div></div>
+        <div class="card"><div class="k">Sivi prsten (spolja)</div><div class="v">Stator — namotaji unutra</div></div>
+        <div class="card"><div class="k">Zeleni prsten</div><div class="v">Faradejjev kavez</div></div>
+        <div class="card"><div class="k">Bež/tan cilindar</div><div class="v">Rotor — ne-fero materijal</div></div>
+        <div class="card"><div class="k">Plavi i bakarnasti blokovi</div><div class="v">Magneti u zidu rotora</div></div>
       </div>
     </div>
   </section>
@@ -81,87 +80,168 @@ input[type="range"]{width:110px}.grid{display:grid;grid-template-columns:2fr 1fr
 const canvas=document.getElementById('c');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
 const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(38,1,.1,100); const clock=new THREE.Clock();
+const camera=new THREE.PerspectiveCamera(38,1,.1,100);
+const clock=new THREE.Clock();
 let playing=true, cutaway=false;
-let target={az:-.45,el:.24,r:9.2,explode:0}; let state={...target};
-function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()} window.addEventListener('resize',resize); resize();
-scene.add(new THREE.AmbientLight(0xffffff,1.18)); const l1=new THREE.DirectionalLight(0xffffff,1.25); l1.position.set(5,6,4); scene.add(l1); const l2=new THREE.DirectionalLight(0xffd9bf,1); l2.position.set(-4,1,-5); scene.add(l2);
-const steel=new THREE.MeshPhysicalMaterial({color:0xc6ccd1,metalness:1,roughness:.17,clearcoat:1});
-const steelDark=new THREE.MeshPhysicalMaterial({color:0x7d848d,metalness:.95,roughness:.28});
-const rotorDark=new THREE.MeshPhysicalMaterial({color:0x5a6067,metalness:.88,roughness:.33});
-const copper=new THREE.MeshPhysicalMaterial({color:0xb86a44,metalness:.9,roughness:.36,emissive:0x2c150a,emissiveIntensity:.18});
-const cageMat=new THREE.MeshPhysicalMaterial({color:0x38c472,metalness:.4,roughness:.45,emissive:0x0c4024,emissiveIntensity:.65,transparent:true,opacity:.94});
-const cageAccentMat=new THREE.MeshPhysicalMaterial({color:0x6aedaa,metalness:.55,roughness:.30,emissive:0x1a6040,emissiveIntensity:.85});
-const statorMat=new THREE.MeshPhysicalMaterial({color:0x9298a0,metalness:.78,roughness:.32,transparent:true,opacity:.62});
-const shaftMat=new THREE.MeshPhysicalMaterial({color:0x757b82,metalness:1,roughness:.2});
+let target={az:-.52,el:.26,r:8.5,explode:0}; let state={...target};
+
+function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+window.addEventListener('resize',resize); resize();
+
+scene.add(new THREE.AmbientLight(0xffffff,1.18));
+const l1=new THREE.DirectionalLight(0xffffff,1.25); l1.position.set(5,6,4); scene.add(l1);
+const l2=new THREE.DirectionalLight(0xffd9bf,1); l2.position.set(-4,1,-5); scene.add(l2);
+
+// Materijali
+const steelMat  = new THREE.MeshPhysicalMaterial({color:0xc6ccd1,metalness:1,roughness:.17,clearcoat:1});
+const neferMat  = new THREE.MeshPhysicalMaterial({color:0xd4c9ae,metalness:.05,roughness:.72});
+const copperMat = new THREE.MeshPhysicalMaterial({color:0xb86a44,metalness:.9,roughness:.36,emissive:0x2c150a,emissiveIntensity:.18});
+const cageMat   = new THREE.MeshPhysicalMaterial({color:0x38c472,metalness:.4,roughness:.45,emissive:0x0c4024,emissiveIntensity:.65,transparent:true,opacity:.93});
+const cageRing  = new THREE.MeshPhysicalMaterial({color:0x6aedaa,metalness:.55,roughness:.30,emissive:0x1a6040,emissiveIntensity:.85});
+const statorMat = new THREE.MeshPhysicalMaterial({color:0x9298a0,metalness:.78,roughness:.32,transparent:true,opacity:.70});
+const shaftMat  = new THREE.MeshPhysicalMaterial({color:0x757b82,metalness:1,roughness:.2});
+const magBlueMat= new THREE.MeshPhysicalMaterial({color:0x3a5c9a,metalness:.8,roughness:.28,emissive:0x0c1a3a,emissiveIntensity:.3});
+
+// Dimenzije
+const L=2.8; // dužina duž X ose
+
+// Radijusi (od unutra ka spolja):
+// shaft=0.22, innerStator=0.80, innerKavez=1.06,
+// rotorInner=1.20, magneti@1.38, rotorOuter=1.56,
+// outerKavez=1.76, outerStator=2.04
+
 const root=new THREE.Group(); scene.add(root);
-const rotorGroup=new THREE.Group(), statorOuter=new THREE.Group(), statorInner=new THREE.Group(), fieldGroup=new THREE.Group(); root.add(rotorGroup,statorOuter,statorInner,fieldGroup);
-const shaft=new THREE.Mesh(new THREE.CylinderGeometry(.22,.22,7.6,50), shaftMat); shaft.rotation.z=Math.PI/2; rotorGroup.add(shaft);
-const hub=new THREE.Mesh(new THREE.CylinderGeometry(.68,.85,1.7,60,1,true), rotorDark); hub.rotation.z=Math.PI/2; hub.position.x=-1.95; rotorGroup.add(hub);
-const hubLip=new THREE.Mesh(new THREE.TorusGeometry(.85,.055,16,80), steel); hubLip.rotation.y=Math.PI/2; hubLip.position.x=-2.8; rotorGroup.add(hubLip);
-const rotorInnerActive=new THREE.Mesh(new THREE.CylinderGeometry(.94,.94,1.18,72,1,true), rotorDark); rotorInnerActive.rotation.z=Math.PI/2; rotorInnerActive.position.x=-.48; rotorGroup.add(rotorInnerActive);
-const cage1Group=new THREE.Group(); root.add(cage1Group); cage1Group.position.x=.18;
-const cage1Barrier=new THREE.Mesh(new THREE.CylinderGeometry(1.12,1.12,.22,72,1,true), cageMat); cage1Barrier.rotation.z=Math.PI/2; cage1Group.add(cage1Barrier);
-const cage1CapL=new THREE.Mesh(new THREE.RingGeometry(.94,1.12,72), cageMat); cage1CapL.rotation.y=Math.PI/2; cage1CapL.position.x=-.11; cage1Group.add(cage1CapL);
-const cage1CapR=new THREE.Mesh(new THREE.RingGeometry(.94,1.12,72), cageMat); cage1CapR.rotation.y=Math.PI/2; cage1CapR.position.x=.11; cage1Group.add(cage1CapR);
-const cage1Ring1=new THREE.Mesh(new THREE.TorusGeometry(1.12,.048,16,100), cageAccentMat); cage1Ring1.rotation.y=Math.PI/2; cage1Ring1.position.x=-.11; cage1Group.add(cage1Ring1);
-const cage1Ring2=new THREE.Mesh(new THREE.TorusGeometry(1.12,.048,16,100), cageAccentMat); cage1Ring2.rotation.y=Math.PI/2; cage1Ring2.position.x=.11; cage1Group.add(cage1Ring2);
-const cage2Group=new THREE.Group(); root.add(cage2Group); cage2Group.position.x=.58;
-const cage2Barrier=new THREE.Mesh(new THREE.CylinderGeometry(1.12,1.12,.22,72,1,true), cageMat); cage2Barrier.rotation.z=Math.PI/2; cage2Group.add(cage2Barrier);
-const cage2CapL=new THREE.Mesh(new THREE.RingGeometry(.94,1.12,72), cageMat); cage2CapL.rotation.y=Math.PI/2; cage2CapL.position.x=-.11; cage2Group.add(cage2CapL);
-const cage2CapR=new THREE.Mesh(new THREE.RingGeometry(.94,1.12,72), cageMat); cage2CapR.rotation.y=Math.PI/2; cage2CapR.position.x=.11; cage2Group.add(cage2CapR);
-const cage2Ring1=new THREE.Mesh(new THREE.TorusGeometry(1.12,.048,16,100), cageAccentMat); cage2Ring1.rotation.y=Math.PI/2; cage2Ring1.position.x=-.11; cage2Group.add(cage2Ring1);
-const cage2Ring2=new THREE.Mesh(new THREE.TorusGeometry(1.12,.048,16,100), cageAccentMat); cage2Ring2.rotation.y=Math.PI/2; cage2Ring2.position.x=.11; cage2Group.add(cage2Ring2);
-const rotorOuterActive=new THREE.Mesh(new THREE.CylinderGeometry(1.42,1.42,1.34,84,1,true), steel); rotorOuterActive.rotation.z=Math.PI/2; rotorOuterActive.position.x=1.18; rotorGroup.add(rotorOuterActive);
-const outerLip1=new THREE.Mesh(new THREE.TorusGeometry(1.42,.06,16,100), steel); outerLip1.rotation.y=Math.PI/2; outerLip1.position.x=.53; rotorGroup.add(outerLip1); const outerLip2=outerLip1.clone(); outerLip2.position.x=1.83; rotorGroup.add(outerLip2);
-const statorIn=new THREE.Mesh(new THREE.CylinderGeometry(.78,.78,1.44,66,1,true), statorMat); statorIn.rotation.z=Math.PI/2; statorIn.position.x=-.56; statorInner.add(statorIn);
-const statorOut=new THREE.Mesh(new THREE.CylinderGeometry(1.72,1.72,1.82,90,1,true), statorMat); statorOut.rotation.z=Math.PI/2; statorOut.position.x=1.12; statorOuter.add(statorOut);
-for(let i=0;i<26;i++){ const a=i/26*Math.PI*2; const m=new THREE.Mesh(new THREE.BoxGeometry(.12,.09,.14), copper); m.position.set(-.48, Math.cos(a)*.95, Math.sin(a)*.95); m.rotation.x=a; rotorGroup.add(m);}
-for(let i=0;i<38;i++){ const a=i/38*Math.PI*2; const m=new THREE.Mesh(new THREE.BoxGeometry(.14,.10,.16), copper); m.position.set(1.18, Math.cos(a)*1.42, Math.sin(a)*1.42); m.rotation.x=a; rotorGroup.add(m);}
-const rearShell=new THREE.Mesh(new THREE.CylinderGeometry(1.24,1.24,1.15,72,1,true), steelDark); rearShell.rotation.z=Math.PI/2; rearShell.position.x=2.62; rotorGroup.add(rearShell);
-function forceArc(xPos, radius, a0, a1, color){
- const curve = new THREE.ArcCurve(0,0,radius,a0,a1,false);
- const pts = curve.getPoints(48).map(p=>new THREE.Vector3(xPos,p.x,p.y));
- const g = new THREE.BufferGeometry().setFromPoints(pts);
- const line = new THREE.Line(g, new THREE.LineBasicMaterial({color, transparent:true, opacity:0.95}));
- const tip = pts[pts.length-1];
- const dir = new THREE.Vector3().subVectors(pts[pts.length-1], pts[pts.length-3]).normalize();
- const cone = new THREE.Mesh(new THREE.ConeGeometry(0.05,0.18,16), new THREE.MeshBasicMaterial({color}));
- cone.position.copy(tip);
- cone.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), dir.clone().normalize());
- const grp = new THREE.Group(); grp.add(line, cone); return grp;
+const rotorGrp      = new THREE.Group(); // ROTOR — rotira
+const outerStatorGrp= new THREE.Group(); // stator — fiksno
+const outerCageGrp  = new THREE.Group(); // kavez — fiksno
+const fieldGrp      = new THREE.Group();
+root.add(rotorGrp,outerStatorGrp,outerCageGrp,fieldGrp);
+
+// ── OSOVINA ──────────────────────────────────────────────────
+const shaft=new THREE.Mesh(new THREE.CylinderGeometry(.22,.22,L+2,48),shaftMat);
+shaft.rotation.z=Math.PI/2; rotorGrp.add(shaft);
+
+// ── ROTOR — ne-fero materijal, pun cilindar ──────────────────
+const rotOutShell=new THREE.Mesh(new THREE.CylinderGeometry(1.56,1.56,L,84,1,true),neferMat);
+rotOutShell.rotation.z=Math.PI/2; rotorGrp.add(rotOutShell);
+// Čeoni diskovi rotora (puni)
+const rotCapL=new THREE.Mesh(new THREE.CircleGeometry(1.56,84),neferMat);
+rotCapL.rotation.y=Math.PI/2; rotCapL.position.x=-L/2; rotorGrp.add(rotCapL);
+const rotCapR=new THREE.Mesh(new THREE.CircleGeometry(1.56,84),neferMat);
+rotCapR.rotation.y=-Math.PI/2; rotCapR.position.x=L/2; rotorGrp.add(rotCapR);
+// Rubni prstenovi rotora
+const rotRimL=new THREE.Mesh(new THREE.TorusGeometry(1.56,.042,12,90),steelMat);
+rotRimL.rotation.y=Math.PI/2; rotRimL.position.x=-L/2; rotorGrp.add(rotRimL);
+const rotRimR=rotRimL.clone(); rotRimR.position.x=L/2; rotorGrp.add(rotRimR);
+
+// ── MAGNETI u sredini zida rotora (r=1.38) ───────────────────
+for(let i=0;i<14;i++){
+  const a=i/14*Math.PI*2;
+  const m=new THREE.Mesh(new THREE.BoxGeometry(L*.70,.21,.21),i%2===0?magBlueMat:copperMat);
+  m.position.set(0,Math.cos(a)*1.38,Math.sin(a)*1.38); m.rotation.x=a;
+  rotorGrp.add(m);
+}
+
+// ── FARADEJJEV KAVEZ — jedan prsten oko rotora ───────────────
+const ocRing=new THREE.Mesh(new THREE.TorusGeometry(1.64,.072,18,120),cageMat);
+ocRing.rotation.y=Math.PI/2; outerCageGrp.add(ocRing);
+
+// ── STATOR (r=2.04) — jedan prsten (spoljašnji) ──────────────
+const osBody=new THREE.Mesh(new THREE.CylinderGeometry(2.04,2.04,L,90,1,true),statorMat);
+osBody.rotation.z=Math.PI/2; outerStatorGrp.add(osBody);
+const osRimR=new THREE.Mesh(new THREE.TorusGeometry(2.04,.058,14,110),steelMat);
+osRimR.rotation.y=Math.PI/2; outerStatorGrp.add(osRimR);
+// namotaji na unutrašnjoj površini spoljašnjeg statora
+for(let i=0;i<24;i++){
+  const a=i/24*Math.PI*2;
+  const t=new THREE.Mesh(new THREE.BoxGeometry(.26,.13,.13),copperMat);
+  t.position.set(0,Math.cos(a)*1.88,Math.sin(a)*1.88); t.rotation.x=a;
+  outerStatorGrp.add(t);
+}
+
+// ── MAGNETNO POLJE ───────────────────────────────────────────
+function forceArc(xPos,radius,a0,a1,color){
+  const pts=new THREE.ArcCurve(0,0,radius,a0,a1,false).getPoints(48).map(p=>new THREE.Vector3(xPos,p.x,p.y));
+  const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color,transparent:true,opacity:.92}));
+  const dir=new THREE.Vector3().subVectors(pts[47],pts[45]).normalize();
+  const cone=new THREE.Mesh(new THREE.ConeGeometry(.05,.18,14),new THREE.MeshBasicMaterial({color}));
+  cone.position.copy(pts[47]); cone.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),dir);
+  const g=new THREE.Group(); g.add(line,cone); return g;
 }
 for(let i=0;i<6;i++){
-  const phase=i/6*Math.PI*2;
-  const innerArc=forceArc(-0.48,1.18,phase,phase+0.78,0x2bb3ff);
-  const outerArc=forceArc(1.18,1.72,phase+0.2,phase+0.92,0xff8c42);
-  fieldGroup.add(innerArc, outerArc);
+  const ph=i/6*Math.PI*2;
+  fieldGrp.add(forceArc(-.6,1.66,ph,ph+.78,0xff8c42));
+  fieldGrp.add(forceArc(.6,1.66,ph+.2,ph+.95,0xff8c42));
 }
-fieldGroup.visible=true;
+
+// ── LABELE ───────────────────────────────────────────────────
 function label(text,color='#1e2124'){
- const c=document.createElement('canvas'); c.width=512; c.height=92; const x=c.getContext('2d');
- x.fillStyle='rgba(255,255,255,.0)'; x.fillRect(0,0,c.width,c.height); x.font='700 34px Satoshi, sans-serif'; x.fillStyle=color; x.textAlign='center'; x.fillText(text,256,58);
- const t=new THREE.CanvasTexture(c); const s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true})); s.scale.set(2.5,.45,1); return s;
+  const cv=document.createElement('canvas'); cv.width=512; cv.height=88;
+  const cx=cv.getContext('2d'); cx.fillStyle='rgba(0,0,0,0)'; cx.fillRect(0,0,512,88);
+  cx.font='700 32px Satoshi,sans-serif'; cx.fillStyle=color; cx.textAlign='center'; cx.fillText(text,256,56);
+  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true}));
+  sp.scale.set(2.6,.46,1); return sp;
 }
-const L1=label('Set magneta (unutrašnji)'); L1.position.set(-.7,-1.65,0); scene.add(L1);
-const L2=label('Dva Faradejevа kaveza','#22c26e'); L2.position.set(.38,2.05,0); scene.add(L2);
-const L3=label('Set magneta (spoljašnji)'); L3.position.set(1.55,-2.05,0); scene.add(L3);
-const L4=label('Spoljašnji stator','#0d5665'); L4.position.set(1.85,2.55,0); scene.add(L4);
-const L5=label('Unutrašnji stator','#0d5665'); L5.position.set(-.92,1.52,0); scene.add(L5);
-function applyCutaway(){const phi = cutaway ? Math.PI*1.35 : Math.PI*2;[hub, rotorInnerActive, cage1Barrier, cage2Barrier, rotorOuterActive, statorIn, statorOut, rearShell].forEach(m=>m.geometry.dispose()); cage1CapL.geometry.dispose(); cage1CapR.geometry.dispose(); cage2CapL.geometry.dispose(); cage2CapR.geometry.dispose(); hub.geometry=new THREE.CylinderGeometry(.68,.85,1.7,60,1,true,0,phi); rotorInnerActive.geometry=new THREE.CylinderGeometry(.94,.94,1.18,72,1,true,0,phi); cage1Barrier.geometry=new THREE.CylinderGeometry(1.12,1.12,.22,72,1,true,0,phi); cage2Barrier.geometry=new THREE.CylinderGeometry(1.12,1.12,.22,72,1,true,0,phi); rotorOuterActive.geometry=new THREE.CylinderGeometry(1.42,1.42,1.34,84,1,true,0,phi); statorIn.geometry=new THREE.CylinderGeometry(.78,.78,1.44,66,1,true,0,phi); statorOut.geometry=new THREE.CylinderGeometry(1.72,1.72,1.82,90,1,true,0,phi); rearShell.geometry=new THREE.CylinderGeometry(1.24,1.24,1.15,72,1,true,0,phi); cage1CapL.geometry=new THREE.RingGeometry(.94,1.12,72,1,0,phi); cage1CapR.geometry=new THREE.RingGeometry(.94,1.12,72,1,0,phi); cage2CapL.geometry=new THREE.RingGeometry(.94,1.12,72,1,0,phi); cage2CapR.geometry=new THREE.RingGeometry(.94,1.12,72,1,0,phi);}
-function setCamera(){ state.az+=(target.az-state.az)*.06; state.el+=(target.el-state.el)*.06; state.r+=(target.r-state.r)*.06; const x=Math.cos(state.el)*Math.cos(state.az)*state.r, y=Math.sin(state.el)*state.r, z=Math.cos(state.el)*Math.sin(state.az)*state.r; camera.position.set(x,y,z); camera.lookAt(.75,0,0); }
-function setView(v){ document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active', b.dataset.view===v)); if(v==='iso') target={...target,az:-.45,el:.24,r:9.2,explode:0}; if(v==='side') target={...target,az:0,el:.03,r:8.6,explode:0}; if(v==='front') target={...target,az:-1.57,el:0,r:7.1,explode:0}; if(v==='explode') target={...target,az:-.36,el:.18,r:9.6,explode:1}; }
+// labele
+const LOS=label('Stator','#0d5665');         LOS.position.set(1.6,2.55,0); scene.add(LOS);
+const LOC=label('Faradejjev kavez','#22c26e'); LOC.position.set(1.6,2.05,0); scene.add(LOC);
+const LR =label('Rotor — ne-fero mat.');       LR.position.set(1.6,-1.8,0); scene.add(LR);
+const LM =label('Magneti','#b86a44');          LM.position.set(1.6,-1.35,0); scene.add(LM);
+
+// ── PRESEK (cutaway) ─────────────────────────────────────────
+const cylSpecs=[[rotOutShell,1.56,1.56,L,84],[osBody,2.04,2.04,L,90]];
+const circSpecs=[[rotCapL,1.56,84],[rotCapR,1.56,84]];
+function applyCutaway(){
+  const phi=cutaway?Math.PI*1.35:Math.PI*2;
+  cylSpecs.forEach(([m,rT,rB,h,seg])=>{m.geometry.dispose();m.geometry=new THREE.CylinderGeometry(rT,rB,h,seg,1,true,0,phi);});
+  circSpecs.forEach(([m,r,seg])=>{m.geometry.dispose();m.geometry=new THREE.CircleGeometry(r,seg,0,phi);});
+  ocRing.geometry.dispose(); ocRing.geometry=new THREE.TorusGeometry(1.64,.072,18,120,phi);
+  osRimR.geometry.dispose(); osRimR.geometry=new THREE.TorusGeometry(2.04,.058,14,110,phi);
+}
+
+// ── KAMERA ───────────────────────────────────────────────────
+function setCamera(){
+  state.az+=(target.az-state.az)*.06; state.el+=(target.el-state.el)*.06; state.r+=(target.r-state.r)*.06;
+  const x=Math.cos(state.el)*Math.cos(state.az)*state.r, y=Math.sin(state.el)*state.r, z=Math.cos(state.el)*Math.sin(state.az)*state.r;
+  camera.position.set(x,y,z); camera.lookAt(0,0,0);
+}
+function setView(v){
+  document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===v));
+  if(v==='iso')     target={...target,az:-.52,el:.26,r:8.5,explode:0};
+  if(v==='side')    target={...target,az:0,el:.02,r:7.5,explode:0};
+  if(v==='front')   target={...target,az:-1.57,el:0,r:6.5,explode:0};
+  if(v==='explode') target={...target,az:-.42,el:.20,r:12,explode:1};
+}
 document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
-document.getElementById('playBtn').addEventListener('click',()=>{playing=!playing;playBtn.textContent=playing?'Pauza':'Pokreni'});
-document.getElementById('cutBtn').addEventListener('click',()=>{cutaway=!cutaway; document.getElementById('cutBtn').classList.toggle('active',cutaway); applyCutaway();});
-document.getElementById('showField').addEventListener('change',e=>{ fieldGroup.visible = e.target.checked; });
-let drag=false,lx=0,ly=0; canvas.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;ly=e.clientY;canvas.setPointerCapture(e.pointerId)}); canvas.addEventListener('pointerup',()=>drag=false); canvas.addEventListener('pointermove',e=>{if(!drag)return; target.az+=(e.clientX-lx)*.006; target.el+=(ly-e.clientY)*.004; target.el=Math.max(-1.2,Math.min(1.2,target.el)); lx=e.clientX; ly=e.clientY;}); canvas.addEventListener('wheel',e=>{target.r=Math.max(5.4,Math.min(12,target.r+e.deltaY*.005)); e.preventDefault();},{passive:false});
-function animate(){ requestAnimationFrame(animate); const dt=clock.getDelta(); const speed=parseFloat(document.getElementById('spd').value); if(playing){ const a=dt*speed*1.5; rotorGroup.rotation.x+=a; fieldGroup.rotation.x+=a*0.35; }
- rotorGroup.position.x+=(0-rotorGroup.position.x)*.07; statorInner.position.x+=((-0.9*target.explode)-statorInner.position.x)*.07; cage1Group.position.x+=(.18-cage1Group.position.x)*.07; cage2Group.position.x+=(.58-cage2Group.position.x)*.07; statorOuter.position.x+=((0.9*target.explode)-statorOuter.position.x)*.07;
- L1.position.x=rotorGroup.position.x-.7; L5.position.x=statorInner.position.x-.92; L2.position.x=(cage1Group.position.x+cage2Group.position.x)/2+.04; L3.position.x=rotorGroup.position.x+1.55; L4.position.x=statorOuter.position.x+1.85;
- setCamera(); renderer.render(scene,camera);} setView('iso'); animate();
-document.addEventListener("DOMContentLoaded", function () {
-const startYear = 2026; const currentYear = new Date().getFullYear(); document.getElementById("year").textContent = startYear === currentYear ? startYear : startYear + " - " + currentYear;});
+document.getElementById('playBtn').addEventListener('click',()=>{playing=!playing;playBtn.textContent=playing?'Pauza':'Pokreni';});
+document.getElementById('cutBtn').addEventListener('click',()=>{cutaway=!cutaway;document.getElementById('cutBtn').classList.toggle('active',cutaway);applyCutaway();});
+document.getElementById('showField').addEventListener('change',e=>{fieldGrp.visible=e.target.checked;});
+
+let drag=false,lx=0,ly=0;
+canvas.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;ly=e.clientY;canvas.setPointerCapture(e.pointerId);});
+canvas.addEventListener('pointerup',()=>drag=false);
+canvas.addEventListener('pointermove',e=>{if(!drag)return;target.az+=(e.clientX-lx)*.006;target.el+=(ly-e.clientY)*.004;target.el=Math.max(-1.2,Math.min(1.2,target.el));lx=e.clientX;ly=e.clientY;});
+canvas.addEventListener('wheel',e=>{target.r=Math.max(5,Math.min(13,target.r+e.deltaY*.005));e.preventDefault();},{passive:false});
+
+// ── ANIMACIJA ────────────────────────────────────────────────
+function animate(){
+  requestAnimationFrame(animate);
+  const dt=clock.getDelta(), spd=parseFloat(document.getElementById('spd').value);
+  if(playing){const a=dt*spd*1.5; rotorGrp.rotation.x+=a; fieldGrp.rotation.x+=a*.35;}
+
+  // explode — razdvajanje duž X ose
+  const ex=target.explode;
+  outerCageGrp.position.x  +=((1.8*ex)-outerCageGrp.position.x)*.07;
+  outerStatorGrp.position.x+=((3.6*ex)-outerStatorGrp.position.x)*.07;
+
+  setCamera();
+  renderer.render(scene,camera);
+}
+setView('iso'); animate();
+document.addEventListener('DOMContentLoaded',function(){
+  const sy=2026, cy=new Date().getFullYear();
+  document.getElementById('year').textContent=sy===cy?sy:sy+' - '+cy;
+});
 </script>
 <!--
 Animacija izrađena za klijenta Nenad.
