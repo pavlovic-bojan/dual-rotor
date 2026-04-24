@@ -1,50 +1,51 @@
-# Single Rotor, Dual Magnet Sets — 3D Concept Visualization
+# Rotor (Ne-fero) + Magneti — 3D Vizualizacija Koncepta
 
-**Live demo:** [pavlovic-bojan.github.io/dual-rotor](https://pavlovic-bojan.github.io/dual-rotor/)
+**Live demo:** [pavlovic-bojan.github.io/rotor](https://pavlovic-bojan.github.io/rotor/)
 
-Interactive 3D visualization of a **single rotor with two magnet sets and two Faraday cages**, built with Three.js.
+Interaktivna 3D vizualizacija koncepta **rotor od ne-fero materijala sa magnetima ugrađenim u zidu**, izrađena pomoću Three.js.
 
-## Concept
+## Koncept
 
-One rotor carries two independent sets of magnets:
+Prednji presek mašine (od spolja ka unutra):
 
-- **Inner magnet set** — targets the inner stator, can operate as an electric motor
-- **Outer magnet set** — targets the outer stator, can operate as a generator
-- **Two Faraday cages** — isolate the active zones and block electromagnetic interference between stators
+- **Stator** — spoljašnji prsten sa namotajima na unutrašnjoj strani
+- **Faradejjev kavez** — jedan prsten koji izoluje rotor od statora
+- **Rotor** — pun cilindar od ne-fero materijala
+- **Magneti** — ugrađeni u zidu rotora (naizmenično N/S)
+- **Osovina** — centralna osovina
 
-This architecture allows both stators to operate in different modes simultaneously on the same rotor, with electromagnetically isolated zones.
+Ne-fero materijal rotora eliminiše reluktantne gubitke. Faradejjev kavez blokira parazitske struje i obezbeđuje čist magnetni signal između statora i rotora.
 
-## Legend
+## Legenda
 
-| Element | Component |
+| Element | Komponenta |
 | --- | --- |
-| Dark grey part | Rotor — inner magnet set |
-| Silver shell | Rotor — outer magnet set |
-| Green bands | Two Faraday cages / isolation |
-| Copper rings | Active zones facing the stators |
-| Blue arrows | Inner stator magnetic field |
-| Orange arrows | Outer stator magnetic field |
+| Sivi cilindar (spolja) | Stator — namotaji unutra |
+| Zeleni prsten | Faradejjev kavez |
+| Bež/tan cilindar | Rotor — ne-fero materijal |
+| Plavi i bakarnasti blokovi | Magneti u zidu rotora (N/S) |
+| Narandžaste strelice | Linije magnetnog polja |
 
-## Controls
+## Kontrole
 
-- **Pause / Start** — pauses or resumes the animation
-- **3D / Side / Front** — changes the camera angle
-- **Explode** — separates components for a better view
-- **Cross-section** — shows a cross-sectional cut of the system
-- **Speed** — controls the rotation speed
-- **Magnetic field** — toggles the magnetic field line visualization
-- **Mouse** — drag to rotate, scroll to zoom
+- **Pauza / Pokreni** — pauzira ili nastavlja animaciju
+- **3D / Bočni / Prednji presek** — menja ugao kamere
+- **Explode** — razdvaja komponente radi boljeg pregleda
+- **Presek** — prikazuje poprečni presek sistema
+- **Brzina** — kontroliše brzinu rotacije
+- **Magnetno polje** — uključuje/isključuje vizualizaciju linija polja
+- **Miš** — prevuci za rotaciju, scroll za zoom
 
 ## Tech Stack
 
 - [Three.js r128](https://threejs.org/)
-- Vanilla HTML/CSS/JS — no build tools, runs directly in the browser
+- Vanilla HTML/CSS/JS — bez build alata, pokreće se direktno u browseru
 - Font: [Satoshi](https://www.fontshare.com/)
 
 ## Deployment
 
-The project is automatically deployed to GitHub Pages on every push to the `main` branch, or manually via the GitHub Actions workflow.
+Projekat se automatski deplojuje na GitHub Pages na svaki push na `main` granu.
 
 ---
 
-© Bojan Pavlović 2026 — [LinkedIn](https://www.linkedin.com/in/pavlovicbojan-dev/)
+© Nenad Djokić 2026 — Developed by [Bojan Pavlović](https://www.linkedin.com/in/pavlovicbojan-dev/)
