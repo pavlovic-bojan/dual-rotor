@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rotor Dual Visualization</title>
+<title>Rotor — Vizualizacija Koncepta</title>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -32,13 +32,16 @@ input[type="range"]{width:110px}.grid{display:grid;grid-template-columns:2fr 1fr
 <div class="wrap">
   <div class="top">
     <div>
-      <h1 class="h1">Prednji Presek — Stator | Faradejjev Kavez | Rotor (ne-fero) + Magneti</h1>
-      <p class="sub">Rotor od ne-fero materijala sa magnetima ugrađenim u zidu rotira unutar Faradejevog kaveza. Stator sa namotajima okružuje kavez spolja.</p>
+      <h1 class="h1">Rotor, Dva Faradejeva Kaveza, Jedan Stator, Dva Magneta</h1>
+      <p class="sub">Koncept motora sa jednim koncentričnim rotorom od ne-fero materijala. Rotor nosi set magneta i izolovan je Faradejevim kavezom — unutrašnji od osovine, spoljašnji od statora. Rotori su na osovini i prenosi moment sile.</p>
     </div>
     <div class="badges">
-      <div class="badge">Stator — namotaji na unutrašnjoj strani</div>
-      <div class="badge">Faradejjev kavez — magnetna izolacija</div>
-      <div class="badge">Rotor — ne-fero materijal + magneti u zidu</div>
+      <div class="badge">Stator + namotaji — fiksno</div>
+      <div class="badge">Spoljašnji Faradejjev kavez</div>
+      <div class="badge">Spoljašnji rotor + magneti — rotira</div>
+      <div class="badge">Unutrašnji Faradejjev kavez</div>
+      <div class="badge">Unutrašnji rotor + magneti — rotira</div>
+      <div class="badge">Osovina — rotira</div>
     </div>
   </div>
   <section class="panel">
@@ -56,21 +59,24 @@ input[type="range"]{width:110px}.grid{display:grid;grid-template-columns:2fr 1fr
     <div class="grid">
       <div class="stack">
         <div class="card">
-          <div class="k">Prednji presek — od spolja ka unutra</div>
-          <div class="v">Stator → Kavez → Rotor + Magneti</div>
-          <div class="small">Spoljašnji stator okružuje Faradejjev kavez. Unutar kaveza rotira cilindar od ne-fero materijala sa magnetima ugrađenim u zidu. Kavez izoluje rotor od elektromagnetnih uticaja statora i obrnuto.</div>
+          <div class="k">Raspored — od spolja ka unutra</div>
+          <div class="v">Stator → Sp. kavez → Sp. rotor → Un. kavez → Un. rotor → Osovina</div>
+          <div class="small">Spoljašnji stator sa bakarnenim namotajima stvara rotirajuće magnetno polje. Spoljašnji Faradejjev kavez izoluje spoljašnji rotor od parazitskih struja. Unutrašnji kavez odvaja dva rotora. Oba rotora od ne-fero materijala nose naizmenične N/S magnete i rotiraju na istoj osovini.</div>
         </div>
         <div class="card">
           <div class="k">Funkcionalna logika</div>
-          <div class="v">Jedan stator, jedan kavez, jedan rotor</div>
-          <div class="small">Stator sa namotajima deluje na magnete ugrađene u zidu rotora kroz Faradejjev kavez. Ne-fero materijal rotora eliminiše reluktantne gubitke. Kavez blokira parazitske struje i obezbeđuje čist magnetni signal.</div>
+          <div class="v">Jedan stator — dva kaveza — dva rotora — jedna osovina</div>
+          <div class="small">Statorsko polje simultano deluje na oba seta magneta. Faradejevi kavezi blokiraju indukovane struje između slojeva i čuvaju čistoću magnetnog signala. Ne-fero materijal rotora eliminiše reluktantne gubitke. Moment sile oba rotora sabira se na jednoj osovini.</div>
         </div>
       </div>
       <div class="stack">
-        <div class="card"><div class="k">Sivi prsten (spolja)</div><div class="v">Stator — namotaji unutra</div></div>
-        <div class="card"><div class="k">Zeleni prsten</div><div class="v">Faradejjev kavez</div></div>
-        <div class="card"><div class="k">Bež/tan cilindar</div><div class="v">Rotor — ne-fero materijal</div></div>
-        <div class="card"><div class="k">Plavi i bakarnasti blokovi</div><div class="v">Magneti u zidu rotora</div></div>
+        <div class="card"><div class="k">Sivi cilindar (spolja)</div><div class="v">Stator — fiksno</div></div>
+        <div class="card"><div class="k">Bakarne kocke uz stator</div><div class="v">Namotaji — fiksno, stvaraju magnetno polje</div></div>
+        <div class="card"><div class="k">Zeleni prsten (r=1.16)</div><div class="v">Spoljašnji Faradejjev kavez — izoluje sp. rotor</div></div>
+        <div class="card"><div class="k">Bež ljuska + plavi/bakar blokovi (sp.)</div><div class="v">Spoljašnji rotor od ne-fero mat. + N/S magneti — rotira</div></div>
+        <div class="card"><div class="k">Zeleni prsten (r=0.50)</div><div class="v">Unutrašnji Faradejjev kavez — izoluje un. rotor</div></div>
+        <div class="card"><div class="k">Bež ljuska + plavi/bakar blokovi (un.)</div><div class="v">Unutrašnji rotor od ne-fero mat. + N/S magneti — rotira</div></div>
+        <div class="card"><div class="k">Siva osovina (centar)</div><div class="v">Zajednička osovina — prenosi moment sile</div></div>
       </div>
     </div>
   </section>
@@ -106,56 +112,84 @@ const magBlueMat= new THREE.MeshPhysicalMaterial({color:0x3a5c9a,metalness:.8,ro
 const L=2.8; // dužina duž X ose
 
 // Radijusi (od unutra ka spolja):
-// shaft=0.22, innerStator=0.80, innerKavez=1.06,
-// rotorInner=1.20, magneti@1.38, rotorOuter=1.56,
-// outerKavez=1.76, outerStator=2.04
+// shaft=0.22, innerKavez=0.50, magneti_un=0.70, rotorUn=0.86,
+// outerKavez=1.16, magneti_sp=1.35, rotorSp=1.50, stator=2.02
 
 const root=new THREE.Group(); scene.add(root);
 const rotorGrp      = new THREE.Group(); // ROTOR — rotira
 const outerStatorGrp= new THREE.Group(); // stator — fiksno
-const outerCageGrp  = new THREE.Group(); // kavez — fiksno
+const outerCageGrp  = new THREE.Group(); // spoljašnji kavez — fiksno
+const innerCageGrp  = new THREE.Group(); // unutrašnji kavez — fiksno
 const fieldGrp      = new THREE.Group();
-root.add(rotorGrp,outerStatorGrp,outerCageGrp,fieldGrp);
+root.add(rotorGrp,outerStatorGrp,outerCageGrp,innerCageGrp,fieldGrp);
 
 // ── OSOVINA ──────────────────────────────────────────────────
 const shaft=new THREE.Mesh(new THREE.CylinderGeometry(.22,.22,L+2,48),shaftMat);
 shaft.rotation.z=Math.PI/2; rotorGrp.add(shaft);
 
 // ── ROTOR — ne-fero materijal, pun cilindar ──────────────────
-const rotOutShell=new THREE.Mesh(new THREE.CylinderGeometry(1.56,1.56,L,84,1,true),neferMat);
+const rotOutShell=new THREE.Mesh(new THREE.CylinderGeometry(0.86,0.86,L,84,1,true),neferMat);
 rotOutShell.rotation.z=Math.PI/2; rotorGrp.add(rotOutShell);
-// Čeoni diskovi rotora (puni)
-const rotCapL=new THREE.Mesh(new THREE.CircleGeometry(1.56,84),neferMat);
+// Čeoni diskovi unutrašnjeg rotora
+const rotCapL=new THREE.Mesh(new THREE.CircleGeometry(0.86,84),neferMat);
 rotCapL.rotation.y=Math.PI/2; rotCapL.position.x=-L/2; rotorGrp.add(rotCapL);
-const rotCapR=new THREE.Mesh(new THREE.CircleGeometry(1.56,84),neferMat);
+const rotCapR=new THREE.Mesh(new THREE.CircleGeometry(0.86,84),neferMat);
 rotCapR.rotation.y=-Math.PI/2; rotCapR.position.x=L/2; rotorGrp.add(rotCapR);
-// Rubni prstenovi rotora
-const rotRimL=new THREE.Mesh(new THREE.TorusGeometry(1.56,.042,12,90),steelMat);
+// Rubni prstenovi unutrašnjeg rotora
+const rotRimL=new THREE.Mesh(new THREE.TorusGeometry(0.86,.034,12,90),steelMat);
 rotRimL.rotation.y=Math.PI/2; rotRimL.position.x=-L/2; rotorGrp.add(rotRimL);
 const rotRimR=rotRimL.clone(); rotRimR.position.x=L/2; rotorGrp.add(rotRimR);
 
-// ── MAGNETI u sredini zida rotora (r=1.38) ───────────────────
+// ── UNUTRAŠNJI MAGNETI (r=0.70) — rotiraju ───────────────────
 for(let i=0;i<14;i++){
   const a=i/14*Math.PI*2;
-  const m=new THREE.Mesh(new THREE.BoxGeometry(L*.70,.21,.21),i%2===0?magBlueMat:copperMat);
-  m.position.set(0,Math.cos(a)*1.38,Math.sin(a)*1.38); m.rotation.x=a;
+  const m=new THREE.Mesh(new THREE.BoxGeometry(L*.70,.18,.18),i%2===0?magBlueMat:copperMat);
+  m.position.set(0,Math.cos(a)*0.70,Math.sin(a)*0.70); m.rotation.x=a;
   rotorGrp.add(m);
 }
 
-// ── FARADEJJEV KAVEZ — jedan prsten oko rotora ───────────────
-const ocRing=new THREE.Mesh(new THREE.TorusGeometry(1.64,.072,18,120),cageMat);
+// ── SPOLJAŠNJI ROTOR — ne-fero ljuska (r=1.50) ───────────────
+const rotOuterShell=new THREE.Mesh(new THREE.CylinderGeometry(1.50,1.50,L*.88,72,1,true),neferMat);
+rotOuterShell.rotation.z=Math.PI/2; rotorGrp.add(rotOuterShell);
+const rotOuterCapL=new THREE.Mesh(new THREE.CircleGeometry(1.50,72),neferMat);
+rotOuterCapL.rotation.y=Math.PI/2; rotOuterCapL.position.x=-L*.44; rotorGrp.add(rotOuterCapL);
+const rotOuterCapR=new THREE.Mesh(new THREE.CircleGeometry(1.50,72),neferMat);
+rotOuterCapR.rotation.y=-Math.PI/2; rotOuterCapR.position.x=L*.44; rotorGrp.add(rotOuterCapR);
+const rotOuterRimL=new THREE.Mesh(new THREE.TorusGeometry(1.50,.034,10,80),steelMat);
+rotOuterRimL.rotation.y=Math.PI/2; rotOuterRimL.position.x=-L*.44; rotorGrp.add(rotOuterRimL);
+const rotOuterRimR=rotOuterRimL.clone(); rotOuterRimR.position.x=L*.44; rotorGrp.add(rotOuterRimR);
+
+// ── SPOLJAŠNJI MAGNETI (r=1.35) — rotiraju ───────────────────
+for(let i=0;i<14;i++){
+  const a=i/14*Math.PI*2;
+  const m=new THREE.Mesh(new THREE.BoxGeometry(L*.70,.20,.20),i%2===0?magBlueMat:copperMat);
+  m.position.set(0,Math.cos(a)*1.35,Math.sin(a)*1.35); m.rotation.x=a;
+  rotorGrp.add(m);
+}
+
+// ── SPOLJAŠNJI FARADEJJEV KAVEZ (r=1.16) ─────────────────────
+const ocRing=new THREE.Mesh(new THREE.TorusGeometry(1.16,.052,18,120),cageMat);
 ocRing.rotation.y=Math.PI/2; outerCageGrp.add(ocRing);
 
-// ── STATOR (r=2.04) — jedan prsten (spoljašnji) ──────────────
-const osBody=new THREE.Mesh(new THREE.CylinderGeometry(2.04,2.04,L,90,1,true),statorMat);
+// ── UNUTRAŠNJI FARADEJJEV KAVEZ (r=0.50) ─────────────────────
+const icRing=new THREE.Mesh(new THREE.TorusGeometry(0.50,.052,18,120),cageMat);
+icRing.rotation.y=Math.PI/2; innerCageGrp.add(icRing);
+
+// ── STATOR (r=2.02) — fiksni spoljašnji okvir sa namotajima ──
+const osBody=new THREE.Mesh(new THREE.CylinderGeometry(2.02,2.02,L,90,1,true),statorMat);
 osBody.rotation.z=Math.PI/2; outerStatorGrp.add(osBody);
-const osRimR=new THREE.Mesh(new THREE.TorusGeometry(2.04,.058,14,110),steelMat);
-osRimR.rotation.y=Math.PI/2; outerStatorGrp.add(osRimR);
-// namotaji na unutrašnjoj površini spoljašnjeg statora
+const osCapL=new THREE.Mesh(new THREE.CircleGeometry(2.02,90),statorMat);
+osCapL.rotation.y=Math.PI/2; osCapL.position.x=-L/2; outerStatorGrp.add(osCapL);
+const osCapR=new THREE.Mesh(new THREE.CircleGeometry(2.02,90),statorMat);
+osCapR.rotation.y=-Math.PI/2; osCapR.position.x=L/2; outerStatorGrp.add(osCapR);
+const osRimL=new THREE.Mesh(new THREE.TorusGeometry(2.02,.058,14,110),steelMat);
+osRimL.rotation.y=Math.PI/2; osRimL.position.x=-L/2; outerStatorGrp.add(osRimL);
+const osRimR=osRimL.clone(); osRimR.position.x=L/2; outerStatorGrp.add(osRimR);
+// Namotaji na unutrašnjoj površini statora
 for(let i=0;i<24;i++){
   const a=i/24*Math.PI*2;
-  const t=new THREE.Mesh(new THREE.BoxGeometry(.26,.13,.13),copperMat);
-  t.position.set(0,Math.cos(a)*1.88,Math.sin(a)*1.88); t.rotation.x=a;
+  const t=new THREE.Mesh(new THREE.BoxGeometry(.22,.10,.10),copperMat);
+  t.position.set(0,Math.cos(a)*1.94,Math.sin(a)*1.94); t.rotation.x=a;
   outerStatorGrp.add(t);
 }
 
@@ -170,8 +204,8 @@ function forceArc(xPos,radius,a0,a1,color){
 }
 for(let i=0;i<6;i++){
   const ph=i/6*Math.PI*2;
-  fieldGrp.add(forceArc(-.6,1.66,ph,ph+.78,0xff8c42));
-  fieldGrp.add(forceArc(.6,1.66,ph+.2,ph+.95,0xff8c42));
+  fieldGrp.add(forceArc(-.6,1.78,ph,ph+.78,0xff8c42));
+  fieldGrp.add(forceArc(.6,1.78,ph+.2,ph+.95,0xff8c42));
 }
 
 // ── LABELE ───────────────────────────────────────────────────
@@ -183,20 +217,24 @@ function label(text,color='#1e2124'){
   sp.scale.set(2.6,.46,1); return sp;
 }
 // labele
-const LOS=label('Stator','#0d5665');         LOS.position.set(1.6,2.55,0); scene.add(LOS);
-const LOC=label('Faradejjev kavez','#22c26e'); LOC.position.set(1.6,2.05,0); scene.add(LOC);
-const LR =label('Rotor — ne-fero mat.');       LR.position.set(1.6,-1.8,0); scene.add(LR);
-const LM =label('Magneti','#b86a44');          LM.position.set(1.6,-1.35,0); scene.add(LM);
+const LOS =label('Stator','#0d5665');               LOS.position.set(1.6, 2.32,0); scene.add(LOS);
+const LNAM=label('Namotaji — fiksno','#9298a0');    LNAM.position.set(1.6, 2.08,0); scene.add(LNAM);
+const LMSP=label('Magneti (sp.)','#b86a44');        LMSP.position.set(1.6, 1.60,0); scene.add(LMSP);
+const LOSC=label('Spoljašnji kavez','#22c26e');     LOSC.position.set(1.6, 1.36,0); scene.add(LOSC);
+const LINC=label('Unutrašnji kavez','#22c26e');     LINC.position.set(1.6,-0.65,0); scene.add(LINC);
+const LMUN=label('Magneti (un.)','#b86a44');        LMUN.position.set(1.6,-0.90,0); scene.add(LMUN);
 
 // ── PRESEK (cutaway) ─────────────────────────────────────────
-const cylSpecs=[[rotOutShell,1.56,1.56,L,84],[osBody,2.04,2.04,L,90]];
-const circSpecs=[[rotCapL,1.56,84],[rotCapR,1.56,84]];
+const cylSpecs=[[rotOutShell,0.86,0.86,L,84],[rotOuterShell,1.50,1.50,L*.88,72],[osBody,2.02,2.02,L,90]];
+const circSpecs=[[rotCapL,0.86,84],[rotCapR,0.86,84],[rotOuterCapL,1.50,72],[rotOuterCapR,1.50,72],[osCapL,2.02,90],[osCapR,2.02,90]];
 function applyCutaway(){
   const phi=cutaway?Math.PI*1.35:Math.PI*2;
   cylSpecs.forEach(([m,rT,rB,h,seg])=>{m.geometry.dispose();m.geometry=new THREE.CylinderGeometry(rT,rB,h,seg,1,true,0,phi);});
   circSpecs.forEach(([m,r,seg])=>{m.geometry.dispose();m.geometry=new THREE.CircleGeometry(r,seg,0,phi);});
-  ocRing.geometry.dispose(); ocRing.geometry=new THREE.TorusGeometry(1.64,.072,18,120,phi);
-  osRimR.geometry.dispose(); osRimR.geometry=new THREE.TorusGeometry(2.04,.058,14,110,phi);
+  ocRing.geometry.dispose(); ocRing.geometry=new THREE.TorusGeometry(1.16,.052,18,120,phi);
+  osRimL.geometry.dispose(); osRimL.geometry=new THREE.TorusGeometry(2.02,.058,14,110,phi);
+  osRimR.geometry.dispose(); osRimR.geometry=new THREE.TorusGeometry(2.02,.058,14,110,phi);
+  icRing.geometry.dispose(); icRing.geometry=new THREE.TorusGeometry(0.50,.052,18,120,phi);
 }
 
 // ── KAMERA ───────────────────────────────────────────────────
@@ -231,6 +269,7 @@ function animate(){
 
   // explode — razdvajanje duž X ose
   const ex=target.explode;
+  innerCageGrp.position.x  +=((-1.8*ex)-innerCageGrp.position.x)*.07;
   outerCageGrp.position.x  +=((1.8*ex)-outerCageGrp.position.x)*.07;
   outerStatorGrp.position.x+=((3.6*ex)-outerStatorGrp.position.x)*.07;
 
